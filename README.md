@@ -5,8 +5,8 @@
 <a href="https://github.com/ambv/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 </p>
 
-XAR lets you package many files into a single self-contained executable file.
-This makes it easy to distribute and install.
+XAR allows you to package many files into a single self-contained executable file.
+This makes distribution and installation easy.
 
 A `.xar` file is a read-only file system image which, when mounted, looks like
 a regular directory to user-space programs.  This requires a one-time
@@ -21,16 +21,17 @@ LAR (Lua archives), and so on.
 
 ## Use Cases
 
-There are two primary use cases for XAR files.  The first is simply collecting
+There are two primary use cases for XAR files.  
+- Simply collecting
 a number of files for automatic, atomic mounting somewhere on the filesystem.
 Using a XAR file vastly shrinks the on-disk size of the data it holds.
 Compressing to below 20% of the original size is not unheard of.  This can save
 multiple gigabytes per machine and reduce random disk IO.  This is especially
 important on machines with flash storage.
 
-The second use case is an extension of the first -- by making the XAR file
-executable and using the `xarexec` helper, a XAR becomes a self-contained
-package of executable code and its data.  A popular example is Python
+-  Making the XAR file
+executable with the `xarexec` helper. A XAR becomes a self-contained
+package of executable code and its data in this case.  A popular example is Python
 application archives that include all Python source code files, as well as
 native shared libraries, configuration files, other data.
 
@@ -89,7 +90,7 @@ are built with `python3 setup.py bdist_xar --xar-compression-algorithm=zstd`.
 | jupyter.xar           |  17530880 B (+1%)  | 0.213 s (-90%)  | 0.181 s (-83%) |
 
 The results show that both file size (with [zstd compression]) and start times
-improve with XARs. This is an improvement when shipping to large number of
+improve with XARs. This is an significant improvement when shipping to large number of
 servers, especially with short-running executables, such as small data
 collection scripts on web servers or interactive command line tools.
 
@@ -178,13 +179,13 @@ run once it starts.
 hello world
 ```
 
-`xarexec_fuse` will execute the executable it is given using the XAR path as the
+`xarexec_fuse` will execute given executables using the XAR path as the
 first argument, and will forward the XARs arguments after.
 
 ## Running the Circle CI tests locally
 
 First you need to install docker (and possible docker-machine), as it is how it
-runs the the code. Then you need to
+runs the code. Then you need to
 [install](https://circleci.com/docs/2.0/local-cli/) the `circleci` cli, and run
 
     circleci build
